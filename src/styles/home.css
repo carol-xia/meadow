@@ -1,0 +1,28 @@
+.fullscreen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-container {
+  display: flex;
+}
+
+.flex-container > div {
+  /* background-color: #f1f1f1;
+  border-color: black;
+  border-width: 5px; */
+  /* margin: 10px;
+  padding: 20px; */
+  /* font-size: 30px; */
+  width: 50vw;
+  height: 100vh; 
+}
+
+.left {
+  /* background-color: pink; */
+}
+
+.right {
+  background-color: yellow;
+}
