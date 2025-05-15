@@ -16,11 +16,12 @@
   padding: 20px; */
   /* font-size: 30px; */
   width: 50vw;
-  height: 100vh; 
+  height: 100vh;
 }
 
 .left {
-  /* background-color: pink; */
+    /* background-color: pink; */
+    display: flex,
 }
 
 .right {
