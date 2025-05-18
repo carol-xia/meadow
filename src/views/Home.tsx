@@ -2,6 +2,7 @@
 import '../styles/home.css'
 import Header from '../components/Header';
 import Reports from '../components/Reports';
+import PieGraph from '../components/PieGraph';
 
 const Home = () => {
   return (
@@ -13,7 +14,7 @@ const Home = () => {
             <Reports />
           </div>
           <div  className="right">
-            {/** TO DO: PIE GRAPH */}
+            <PieGraph />
           </div>
         </div>
       </div>

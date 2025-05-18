@@ -20,14 +20,14 @@ const fakeReports =  [
         category: "Housing", 
         expense: "February rent",
         // date: "2024-05-16T14:30:25Z", 
-        price: 1600, 
+        price: 1000, 
       },
       {
         id: 2, 
         category: "Transit", 
         expense: "gas station",
         // date: "2024-05-17T14:30:25Z", 
-        price: 26.42, 
+        price: 46.42, 
       },
     ]
   },
@@ -40,7 +40,7 @@ const fakeReports =  [
         category: "Groceries", 
         expense: "Trader Joe’s",
         // date: "2024-05-01T14:30:25Z", 
-        price: 32.45, 
+        price: 12.45, 
       },
       {
         id: 1, 
@@ -54,7 +54,7 @@ const fakeReports =  [
         category: "Transit", 
         expense: "gas station",
         // date: "2024-05-17T14:30:25Z", 
-        price: 26.42, 
+        price: 86.42, 
       },
     ]
   },
@@ -74,7 +74,7 @@ const fakeReports =  [
         category: "Housing", 
         expense: "April rent",
         // date: "2024-05-16T14:30:25Z", 
-        price: 1600, 
+        price: 1400, 
       },
       {
         id: 2, 
@@ -101,14 +101,14 @@ const fakeReports =  [
         category: "Housing", 
         expense: "May rent",
         // date: "2024-05-16T14:30:25Z", 
-        price: 1600, 
+        price: 2000, 
       },
       {
         id: 2, 
         category: "Transit", 
         expense: "gas station",
         // date: "2024-05-17T14:30:25Z", 
-        price: 26.42, 
+        price: 126.42, 
       },
     ]
   }
