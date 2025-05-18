@@ -8,6 +8,14 @@
 //   getCurrentUser,
 // } from "aws-amplify/auth";
 // // import outputs from "../amplify_outputs.json";
+// App.tsx
+// import { useEffect, useState, FormEvent } from "react";
+// import {
+//   signIn,
+//   signOut,
+//   signUp,
+//   getCurrentUser,
+// } from "aws-amplify/auth";
 
 // import LoginForm from "./views/LoginForm";
 // import SignUpForm from "./views/SignupForm";
@@ -15,14 +23,16 @@
 
 // // Amplify.configure(outputs);
 
-// export default function App() {
 //   const [isAuthenticated, setIsAuthenticated] = useState(false);
 //   const [isSignUpMode, setIsSignUpMode] = useState(false);
 //   const [error, setError] = useState("");
 //   const [success, setSuccess] = useState("");
+// export default function App() {
+//   const [isAuthenticated, setIsAuthenticated] = useState(false);
+//   const [error, setError] = useState("");
+//   const [success, setSuccess] = useState("");
 
 //   const [signInUsername, setSignInUsername] = useState("");
-//   const [signInPassword, setSignInPassword] = useState("");
 
 //   const [signUpUsername, setSignUpUsername] = useState("");
 //   const [signUpEmail, setSignUpEmail] = useState("");
