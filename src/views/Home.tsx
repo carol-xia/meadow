@@ -1,8 +1,8 @@
 // import { useState } from 'react'
-import '../styles/home.css'
 import Header from '../components/Header';
 import Reports from '../components/Reports';
 import PieGraph from '../components/PieGraph';
+import '../styles/home.css'
 
 const Home = () => {
   return (
