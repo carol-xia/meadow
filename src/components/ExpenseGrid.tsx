@@ -1,6 +1,8 @@
 import Box from '@mui/material/Box';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import '../styles/home.css'
+// @ts-ignore
+import categoryOptions from '../constants/categoryOptions.js';
 
 interface ExpenseGridProps {
   index: number,
@@ -13,7 +15,7 @@ const columns: GridColDef<(typeof rows)[number]>[] = [
     field: 'category',
     headerName: 'Category',
     type: 'singleSelect',
-    valueOptions: ['Housing', 'Groceries', 'Transit', 'Grocery', 'Eating Out', 'Fun', 'Miscellaneous'],
+    valueOptions: categoryOptions,
     editable: true,
     width: 150,
   },
