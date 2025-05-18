@@ -1,19 +1,15 @@
 // App.tsx
 import { useEffect, useState, FormEvent } from "react";
-import { Amplify } from "aws-amplify";
 import {
   signIn,
   signOut,
   signUp,
   getCurrentUser,
 } from "aws-amplify/auth";
-import outputs from "../amplify_outputs.json";
 
 import LoginForm from "./views/LoginForm";
 import SignUpForm from "./views/SignupForm";
 import Home from "./views/Home";
-
-Amplify.configure(outputs);
 
 export default function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
