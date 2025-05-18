@@ -62,8 +62,8 @@ export default function PieGraph() {
           valueFormatter,
         },
       ]}
-      width={400}
-      height={400}
+      // width={400}
+      // height={400}
     />
   );
 }
