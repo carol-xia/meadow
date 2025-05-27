@@ -21,12 +21,12 @@
 
 .left {
     /* background-color: pink; */
-    display: flex,
+    /* display: flex, */
 }
 
 .right {
   /* background-color: yellow; */
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
 }

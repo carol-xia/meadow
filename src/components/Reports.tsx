@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { Box, Tab, Tabs } from "@mui/material";
-import AddIcon from '@mui/icons-material/Add';
+import { Box, Tab, Tabs, Button } from "@mui/material";
+import IconButton from '@mui/material/IconButton';
 import ExpenseGrid from "./ExpenseGrid";
+import { useAppSelector } from "../reducers/expense/hooks";
+import ModalAddReport from "../views/ModalAddReport";
 
 const fakeReports =  [
   {
@@ -115,44 +117,81 @@ const fakeReports =  [
 ]
 
 const Reports = () => {
-  let reports = fakeReports; // TO DO
+  // const reports = []; // TO DO
+  // const reports = fakeReports; // TO DO
+  const reportList = useAppSelector(state => state.reportList);
   const [value, setValue] = useState<number>(0);
+  const [open, setOpen] = useState(false);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    console.log(`newValue=${newValue}`)
     setValue(newValue);
+
+    if (newValue === reportList.length) {
+      console.log('pressed!!!')
+    }
   };
 
+  const onClickAdd = () => {
+    console.log('onClickAdd');
+    setOpen(true);
+  }
+
   return (
-    <Box sx={{
+    <>
+      <Box sx={{
         borderBottom: 2,
         borderColor: 'divider',
         display: 'flex',
         flexDirection: 'column',
-    }}>
-      <Tabs
-        value={value}
-        onChange={handleChange}
-        variant="scrollable"
-        scrollButtons="auto"
-        aria-label="scrollable auto tabs example"
-      >
-        {reports.map(tab => {
+      }}>
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          variant="scrollable"
+          scrollButtons="auto"
+          aria-label="scrollable auto tabs example"
+        >
+          {reportList.reports.map(tab => {
+            return (
+              <Tab label={tab.name} />
+            )
+          })}
+          <Button
+            variant="outlined"
+            onClick={onClickAdd}
+            sx={{
+              // height: '56px',
+              px: 3,
+              borderRadius: '8px',
+              // border: '2px solid #000',
+              color: '#000',
+              backgroundColor: 'white',
+              fontWeight: 'normal',
+              '&:hover': {
+                backgroundColor: '#f5f5f5',
+                border: '2px solid #000',
+              }
+            }}
+          >
+            Add Report
+          </Button>
+        </Tabs>
+        {reportList.reports.map((report, ind) => {
           return (
-            <Tab label={tab.name} />
+            <ExpenseGrid
+              index={ind}
+              value={value}
+              rows={report.purchases}
+            />
           )
         })}
-        <Tab icon={<AddIcon />} aria-label="add" />
-      </Tabs>
-      {reports.map((report, ind) => {
-        return (
-          <ExpenseGrid
-            index={ind}
-            value={value}
-            rows={report.purchases}
-          />
-        )
-      })}
-    </Box>
+      </Box>
+      <ModalAddReport
+        open={open}
+        setOpen={setOpen}
+      />
+    </>
   )
 }
  

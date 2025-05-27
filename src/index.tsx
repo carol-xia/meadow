@@ -5,10 +5,15 @@ import outputs from "../amplify_outputs.json";
 import './index.css'
 import App from './App.tsx'
 
+import { Provider as ReduxProvider} from 'react-redux';
+import { store } from './reducers/expense/store.ts';
+
 Amplify.configure(outputs);
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    <ReduxProvider store={store}>
+      <App />
+    </ReduxProvider>
   </StrictMode>,
 )

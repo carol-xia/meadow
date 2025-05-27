@@ -1,5 +1,7 @@
 import Box from '@mui/material/Box';
-import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import Tooltip from '@mui/material/Tooltip';
+import AddIcon from '@mui/icons-material/Add';
+import { DataGrid, GridColDef, Toolbar, ToolbarButton } from '@mui/x-data-grid';
 import '../styles/home.css'
 // @ts-ignore
 import categoryOptions from '../constants/categoryOptions.js';
@@ -39,12 +41,12 @@ const columns: GridColDef<(typeof rows)[number]>[] = [
     width: 150,
     editable: true,
     valueGetter: (value) => {
-        // TO DO: fix formatting
-        if (value){
-            return `$${value}`
-        } else {
-            return `$0.00`
-        }
+      // TO DO: fix formatting
+      if (value){
+          return `$${value}`
+      } else {
+          return `$0.00`
+      }
     }
   },
   // TO DO: buttons for add, delete
@@ -63,21 +65,22 @@ export default function ExpenseGrid({
     >
       {value === index &&
         <Box sx={{ 
-          display: 'flex',
-          height: 910,
+          // display: 'flex',
+          // height: 910,
         }}>
           <DataGrid
+            autoHeight
             rows={rows}
             columns={columns}
-            initialState={{
-              pagination: {
-                paginationModel: {
-                  pageSize: 5,
-                },
-              },
-            }}
-            pageSizeOptions={[5]}
-            checkboxSelection
+            // initialState={{
+            //   pagination: {
+            //     paginationModel: {
+            //       pageSize: 5,
+            //     },
+            //   },
+            // }}
+            // pageSizeOptions={[5]}
+            // checkboxSelection
             disableRowSelectionOnClick
           />
         </Box>
