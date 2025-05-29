@@ -13,7 +13,7 @@ const Home = () => {
           <div className="left">
             <Reports />
           </div>
-          <div  className="right">
+          <div className="right">
             <PieGraph />
           </div>
         </div>

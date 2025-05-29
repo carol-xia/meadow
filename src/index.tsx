@@ -6,7 +6,7 @@ import './index.css'
 import App from './App.tsx'
 
 import { Provider as ReduxProvider} from 'react-redux';
-import { store } from './reducers/expense/store.ts';
+import { store } from './reducers/store.ts';
 
 Amplify.configure(outputs);
 

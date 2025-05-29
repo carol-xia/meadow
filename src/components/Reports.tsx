@@ -1,8 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Box, Tab, Tabs, Button } from "@mui/material";
-import IconButton from '@mui/material/IconButton';
 import ExpenseGrid from "./ExpenseGrid";
-import { useAppSelector } from "../reducers/expense/hooks";
+import { useAppSelector } from "../reducers/hooks";
 import ModalAddReport from "../views/ModalAddReport";
 
 const fakeReports =  [
@@ -117,9 +116,7 @@ const fakeReports =  [
 ]
 
 const Reports = () => {
-  // const reports = []; // TO DO
-  // const reports = fakeReports; // TO DO
-  const reportList = useAppSelector(state => state.reportList);
+  const reports = useAppSelector(state => state.reports);
   const [value, setValue] = useState<number>(0);
   const [open, setOpen] = useState(false);
 
@@ -127,13 +124,9 @@ const Reports = () => {
     console.log(`newValue=${newValue}`)
     setValue(newValue);
 
-    if (newValue === reportList.length) {
-      console.log('pressed!!!')
-    }
   };
 
   const onClickAdd = () => {
-    console.log('onClickAdd');
     setOpen(true);
   }
 
@@ -152,9 +145,9 @@ const Reports = () => {
           scrollButtons="auto"
           aria-label="scrollable auto tabs example"
         >
-          {reportList.reports.map(tab => {
+          {reports.reports.map(report => {
             return (
-              <Tab label={tab.name} />
+              <Tab label={report.name} />
             )
           })}
           <Button
@@ -177,7 +170,7 @@ const Reports = () => {
             Add Report
           </Button>
         </Tabs>
-        {reportList.reports.map((report, ind) => {
+        {reports.reports.map((report, ind) => {
           return (
             <ExpenseGrid
               index={ind}

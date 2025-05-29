@@ -3,11 +3,13 @@
 */
  
 import { configureStore } from '@reduxjs/toolkit';
-import reportListSlice from './expenseSlice';
+import reportSlice from './slices/reportSlice';
+import purchaseSlice from './slices/purchaseSlice';
  
 export const store = configureStore({
   reducer: {
-    reportList: reportListSlice,
+    reports: reportSlice,
+    purchases: purchaseSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

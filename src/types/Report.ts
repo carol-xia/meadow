@@ -1,11 +1,11 @@
 export type Report = {
   id: string,
   name: string,
-  purchases: Array<Purchase>,
+  purchases: Array<string>, //array of purchase ids
 }
 
 export type Purchase = {
-  id: number, 
+  id: string, 
   category: string,
   expense: string,
   date: string,

@@ -7,8 +7,8 @@ import {
   Typography,
   IconButton,
 } from '@mui/material';
-import { useAppDispatch } from '../reducers/expense/hooks';
-import { addReportToList } from '../reducers/expense/expenseSlice'
+import { useAppDispatch } from '../reducers/hooks';
+import { addReport } from '../reducers/slices/reportSlice'
 
 const ModalAddReport = ({
   open,
@@ -33,7 +33,7 @@ const ModalAddReport = ({
     }
     
     setError('');
-    dispatch(addReportToList({
+    dispatch(addReport({
       id: crypto.randomUUID(),
       name: reportName,
       purchases: [],

@@ -15,11 +15,11 @@ const initialState: reportListState = {
   reports: [],
 }
  
-const expenseSlice = createSlice({
+const reportSlice = createSlice({
   name: 'reportList',
   initialState,
   reducers: {
-    addReportToList(state, action: PayloadAction<Report>) {
+    addReport(state, action: PayloadAction<Report>) {
       const existingReport = state.reports.find(
         (report) => report.id === action.payload.id
       );
@@ -27,26 +27,17 @@ const expenseSlice = createSlice({
         state.reports = [...state.reports, action.payload];
       }
     },
-    removeReportFromList(state, action: PayloadAction<Report>) {
+    removeReport(state, action: PayloadAction<Report>) {
       const filteredReportList = state.reports.filter(
         (report) => report.id !== action.payload.id
       );
       state.reports = filteredReportList;
     },
-    updatePurchases(state, action: PayloadAction<Report>) {
-      const index = state.reports.findIndex(
-        (report) => report.id === action.payload.id
-      );
-      const newArray = [...state.reports];
-      newArray[index].purchases = action.payload.purchases;
-      state.reports = newArray;
-    }
   }
 });
  
 export const {
-  addReportToList,
-  removeReportFromList,
-  updatePurchases,
-} = expenseSlice.actions;
-export default expenseSlice.reducer;
+  addReport,
+  removeReport,
+} = reportSlice.actions;
+export default reportSlice.reducer;
