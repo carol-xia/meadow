@@ -1,35 +1,12 @@
 import { PieChart } from '@mui/x-charts/PieChart';
+import { useAppSelector, useAppDispatch } from '../reducers/hooks';
 // @ts-ignore
 import categoryOptions from '../constants/categoryOptions.js';
 
-const data = [
-  {
-    id: 0, 
-    category: "Groceries", 
-    expense: "Trader Joe’s",
-    // date: "2024-05-01T14:30:25Z", 
-    price: 32.45, 
-  },
-  {
-    id: 1, 
-    category: "Housing", 
-    expense: "May rent",
-    // date: "2024-05-16T14:30:25Z", 
-    price: 1600, 
-  }, 
-  {
-    id: 2, 
-    category: "Transit", 
-    expense: "gas station",
-    // date: "2024-05-17T14:30:25Z", 
-    price: 26.42,
-  },
-]
-
 const formatPieGraphData = (dataArr: Array<any>) => {
   let categorySums = {};
-  categoryOptions.forEach((category, ind) => {
-    categorySums = data.reduce((sums, item) => {
+  categoryOptions.forEach(category => {
+    categorySums = dataArr.reduce((sums, item) => {
     // If this category doesn't exist in our sums object yet, initialize it to 0
       if (!sums[item.category]) {
         sums[item.category] = 0;
@@ -52,11 +29,14 @@ const formatPieGraphData = (dataArr: Array<any>) => {
 const valueFormatter = (item: { value: number }) => `$${item.value}`;
 
 export default function PieGraph() {
+  const { purchases } = useAppSelector(state => state.purchases);
+  // console.log(`purchases=${JSON.stringify(purchases)}`);
+
   return (
     <PieChart
       series={[
         {
-          data: formatPieGraphData(data),
+          data: formatPieGraphData(purchases),
           highlightScope: { fade: 'global', highlight: 'item' },
           faded: { innerRadius: 30, additionalRadius: -30, color: 'gray' },
           valueFormatter,

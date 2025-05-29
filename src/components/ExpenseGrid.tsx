@@ -164,7 +164,7 @@ export default function FullFeaturedCrudGrid() {
     type: 'number',
     width: 150,
     editable: true,
-    valueGetter: (value) => {
+    valueFormatter: (value) => {
       // TO DO: fix formatting
       if (value > 0){
           return `$${value}`
