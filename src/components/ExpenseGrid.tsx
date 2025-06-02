@@ -37,12 +37,13 @@ declare module '@mui/x-data-grid' {
 function EditToolbar(props: GridSlotProps['toolbar']) {
   const { setRows, setRowModesModel } = props;
   const dispatch = useAppDispatch();
+  const { selectedReport } = useAppSelector(state => state.reports);
 
   const handleClick = () => {
     const id = crypto.randomUUID();
     setRows((oldRows) => [
       ...oldRows,
-      { id, category: '', date: '', expense: '', price: 0 },
+      { id, reportId: selectedReport, category: '', date: '', expense: '', price: 0 },
     ]);
     setRowModesModel((oldModel) => ({
       ...oldModel,
@@ -50,6 +51,7 @@ function EditToolbar(props: GridSlotProps['toolbar']) {
     }));
     dispatch(addPurchase({
       id,
+      reportId: selectedReport,
       category: '',
       expense: '',
       date: '',
@@ -68,17 +70,20 @@ function EditToolbar(props: GridSlotProps['toolbar']) {
   );
 }
 
-export default function FullFeaturedCrudGrid() {
+export default function FullFeaturedCrudGrid(props: any) {
   const dispatch = useAppDispatch();
-  // const { reports } = useAppSelector(state => state.reports);
+  const { selectedReport } = useAppSelector(state => state.reports);
   const { purchases } = useAppSelector(state => state.purchases);
+  const filteredPurchases = purchases.filter(
+    purchase => purchase.id === selectedReport
+  );
+  const initialRows = [...filteredPurchases];
 
-  const initialRows: GridRowsProp = [...purchases];
-  
-  // useEffect(() => {
-  //   console.log(`reports=${JSON.stringify(reports)}`)
-  //   console.log(`purchases=${JSON.stringify(purchases)}`)
-  // })
+  const filterRows = (arr) => {
+    return arr.filter(
+      row => row.reportId === selectedReport
+    );
+  }
 
   const [rows, setRows] = React.useState(initialRows);
   const [rowModesModel, setRowModesModel] = React.useState<GridRowModesModel>({});
@@ -121,6 +126,7 @@ export default function FullFeaturedCrudGrid() {
   const processRowUpdate = (newRow: GridRowModel) => {
     dispatch(updatePurchase({
       id: newRow.id,
+      reportId: selectedReport,
       category: newRow.category,
       expense: newRow.expense,
       date: newRow.date,
@@ -237,7 +243,7 @@ export default function FullFeaturedCrudGrid() {
       }}
     >
       <DataGrid
-        rows={rows}
+        rows={filterRows(rows)}
         columns={columns}
         editMode="row"
         rowModesModel={rowModesModel}

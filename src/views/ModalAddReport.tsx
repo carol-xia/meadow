@@ -36,7 +36,6 @@ const ModalAddReport = ({
     dispatch(addReport({
       id: crypto.randomUUID(),
       name: reportName,
-      purchases: [],
     }));
     // TO DO: Add POST request
 

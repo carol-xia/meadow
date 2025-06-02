@@ -5,7 +5,8 @@ export type Report = {
 }
 
 export type Purchase = {
-  id: string, 
+  id: string,
+  reportId: string,
   category: string,
   expense: string,
   date: string,

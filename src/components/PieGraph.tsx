@@ -29,21 +29,22 @@ const formatPieGraphData = (dataArr: Array<any>) => {
 const valueFormatter = (item: { value: number }) => `$${item.value}`;
 
 export default function PieGraph() {
+  const { selectedReport } = useAppSelector(state => state.reports);
   const { purchases } = useAppSelector(state => state.purchases);
-  // console.log(`purchases=${JSON.stringify(purchases)}`);
+  const filteredPurchases = purchases.filter(
+    purchase => purchase.reportId === selectedReport
+  );
 
   return (
     <PieChart
       series={[
         {
-          data: formatPieGraphData(purchases),
+          data: formatPieGraphData(filteredPurchases),
           highlightScope: { fade: 'global', highlight: 'item' },
           faded: { innerRadius: 30, additionalRadius: -30, color: 'gray' },
           valueFormatter,
         },
       ]}
-      // width={400}
-      // height={400}
     />
   );
 }

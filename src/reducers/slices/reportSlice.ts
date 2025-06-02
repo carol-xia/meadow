@@ -8,10 +8,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Report } from '../../types/Report';
  
 export interface reportListState {
+  selectedReport: string,
   reports: Report[];
 }
  
 const initialState: reportListState = {
+  selectedReport: '',
   reports: [],
 }
  
@@ -19,6 +21,10 @@ const reportSlice = createSlice({
   name: 'reportList',
   initialState,
   reducers: {
+    selectReport(state, action: PayloadAction<string>) {
+      console.log(`selectedReport=${JSON.stringify(action.payload)}`)
+      state.selectedReport = action.payload;
+    },
     addReport(state, action: PayloadAction<Report>) {
       const existingReport = state.reports.find(
         (report) => report.id === action.payload.id
@@ -37,6 +43,7 @@ const reportSlice = createSlice({
 });
  
 export const {
+  selectReport,
   addReport,
   removeReport,
 } = reportSlice.actions;
